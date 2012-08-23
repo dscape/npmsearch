@@ -10,7 +10,7 @@ var request        = require('request')
 request(npm).pipe(parser);
 
 parser.on('data', function(module) {
-  var url = "document?format=json&uri=/" + module.id;
+  var url = "documents?format=json&uri=/" + module.id;
   request({uri: search + url, method: "PUT", body: JSON.stringify(module) }, 
   function (err, headers, data) {
     if(err) {
