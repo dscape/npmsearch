@@ -21,6 +21,8 @@ parser.on('data', function(module) {
       console.log('ok:', url);
     } else {
       console.log("err:", url);
+      console.log("err:", headers.statusCode);
+      console.log("err:", data);
       errs.push(
         { err: "status code was " + headers.statusCode
         , module: module
