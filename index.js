@@ -11,7 +11,7 @@ request(npm).pipe(parser);
 
 parser.on('data', function(module) {
   var url = "document?format=json&uri=/" + module.id;
-  request.put(search + url, 
+  request({uri: search + url, method: "PUT", body: JSON.stringify(module) }, 
   function (err, headers, data) {
     if(err) {
       console.log("exc:", err);
@@ -25,7 +25,7 @@ parser.on('data', function(module) {
         { err: "status code was " + headers.statusCode
         , module: module
         , response_body: data
-        });
+      });
     }
   });
 });
